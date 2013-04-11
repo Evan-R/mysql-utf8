@@ -36,7 +36,7 @@ while ($row_tables = mysql_fetch_row($rs_tables)) {
     // Alter table collation
     // ALTER TABLE `account` DEFAULT CHARACTER SET utf8
     if ($show_alter_table) {
-        echo("ALTER TABLE `$table` DEFAULT CHARACTER SET $character_set;\r\n");
+        echo("ALTER TABLE `$table` DEFAULT CHARACTER SET $character_set;" . PHP_EOL);
     }
  
     $rs = mysql_query(" SHOW FULL FIELDS FROM `$table` ") or die(mysql_error());
@@ -65,7 +65,7 @@ while ($row_tables = mysql_fetch_row($rs_tables)) {
         // ALTER TABLE `account` CHANGE `email` `email` VARCHAR( 50 ) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
         if ($show_alter_field) {
             $field = mysql_real_escape_string($row['Field']);
-            echo "ALTER TABLE `$table` CHANGE `$field` `$field` $row[Type] CHARACTER SET $character_set COLLATE $convert_to $nullable $default; \r\n";
+            echo "ALTER TABLE `$table` CHANGE `$field` `$field` $row[Type] CHARACTER SET $character_set COLLATE $convert_to $nullable $default;" . PHP_EOL;
         }
     }
 }
